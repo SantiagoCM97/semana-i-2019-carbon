@@ -1,5 +1,6 @@
 import {CarbonLDP} from "carbonldp";
 
+// Returns keyword labels, occurences and their IDs
 export default function getKeywords() {
     const carbonldp = new CarbonLDP("https://data-itesm.lab.base22.com/");
 
@@ -21,6 +22,7 @@ export default function getKeywords() {
     });
 }
 
+// Returns movie titles for a given ID
 export function getMovies(id) {
     const carbonldp = new CarbonLDP("https://data-itesm.lab.base22.com/");
 
