@@ -31,6 +31,11 @@ export function getMovies(id) {
                 <https://data-itesm.lab.base22.com/keywords/${id}/> <http://schema.org/Movie> ?movies .
                 ?movies <https://data-itesm.lab.base22.com/vocabularies/main/#label> ?movieTitles .
             }
-        `
-    )
+            GROUP BY ?keyword ?label
+            ORDER BY DESC(?count)
+            LIMIT 200
+            `
+    ).then((response) => {
+        return response.bindings;
+    });
 }
