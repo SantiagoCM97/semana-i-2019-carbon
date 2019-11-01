@@ -28,15 +28,12 @@ export function getMovies(id) {
 
     return carbonldp.documents.$executeSELECTQuery(
         `
-            SELECT ?movieTitles
-            WHERE {
-                <https://data-itesm.lab.base22.com/keywords/${id}/> <http://schema.org/Movie> ?movies .
-                ?movies <https://data-itesm.lab.base22.com/vocabularies/main/#label> ?movieTitles .
-            }
-            GROUP BY ?keyword ?label
-            ORDER BY DESC(?count)
-            LIMIT 200
-            `
+        SELECT ?movieTitles
+        WHERE {
+            <https://data-itesm.lab.base22.com/keywords/${id}/> <http://schema.org/Movie> ?movies .
+            ?movies <https://data-itesm.lab.base22.com/vocabularies/main/#label> ?movieTitles .
+        }
+        `
     ).then((response) => {
         return response.bindings;
     });
